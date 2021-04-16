@@ -1,0 +1,76 @@
+#include <iostream>
+#include <string>
+#include <cstring>
+
+using std::cout;
+using std::cin;
+using std::endl;
+using std::string;
+
+void divisionEnBloques(string &cadenaDeCaracteres);
+void reemplazarPorAster(string &cadena);
+
+int main()
+{
+    string cadenaEjercicio1{"intente analizar mas profundamente los mensajes recibidos"};
+    divisionEnBloques(cadenaEjercicio1);
+    cout<<cadenaEjercicio1<<endl;
+    string cadenaSeparadaConAster=cadenaEjercicio1;
+    cout<<endl<<endl;
+    reemplazarPorAster(cadenaSeparadaConAster);
+    cout<<cadenaSeparadaConAster<<endl;
+
+}
+
+void divisionEnBloques(string &cadenaDeCaracteres)
+{
+    string pivote;
+    //  1) Divida una cadena de caracteres en bloques
+
+    //      a)Ingrese por teclado una cadena de caracteres:
+    //          Ejemplo: intente analizar mas profundamente los mensajes recibidos
+    //cout<<"Ingrese la cadena de caracteres: ";
+    //getline(cin,cadenaDeCaracteres);
+
+    //      b) ingrese por teclado el número de caracteres que tendrá cada bloque:
+    //          Ejemplo: 4
+    int caracteresXbloque;
+    cout<<"Ingrese la cantidad de caracteres de cada bloque: ";
+    cin>>caracteresXbloque;
+    for(unsigned int a{0};a<((cadenaDeCaracteres.size())/(caracteresXbloque));a++)
+    {
+        for(unsigned int b{0};b<caracteresXbloque;b++)
+        {
+            pivote+=cadenaDeCaracteres[(a*caracteresXbloque)+b];
+        }
+        pivote+="\n";
+    }
+    for(unsigned int a{0};a<((cadenaDeCaracteres.size())%4);a++)
+    {
+        pivote+=cadenaDeCaracteres[cadenaDeCaracteres.size()+a-1];
+    }
+    int residuo=cadenaDeCaracteres.size();
+    int valor=residuo%4;
+    int pivote2=(caracteresXbloque);
+    for(unsigned int a{pivote2-valor};a>0;a--)
+    {
+        pivote+="X";
+    }
+    cadenaDeCaracteres=pivote;
+}
+
+void reemplazarPorAster(string &cadena)
+{
+    char cadenaPivote[cadena.size()];
+    for(unsigned int a{0};a<cadena.size();a++)
+    {
+        *(cadenaPivote+1)=cadena[a];
+    }
+    int numSeparCadena;
+    char delim[]="\n";
+    char *token=strtok(cadenaPivote,delim);
+    while(token)
+    {
+
+    }
+}
